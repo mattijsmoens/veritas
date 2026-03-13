@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veritas-truth-adapter"
+version = "0.1.0"
+description = "LoRA training data and adapter management for teaching AI models truthful, hedged responses. Built on SovereignShield's TruthGuard pipeline."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+dependencies = [
+    "sovereign-shield>=1.2.0"
+]
+authors = [
+    {name = "Mattijs Moens"}
+]
+keywords = [
+    "lora",
+    "fine-tuning",
+    "truthfulness",
+    "hallucination",
+    "ai-safety",
+    "training-data",
+    "adapter",
+    "truth-guard",
+    "rlhf",
+    "alignment"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/mattijsmoens/veritas"
+Documentation = "https://github.com/mattijsmoens/veritas#readme"
+Issues = "https://github.com/mattijsmoens/veritas/issues"
+
+[project.scripts]
+veritas = "veritas.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["veritas*"]
