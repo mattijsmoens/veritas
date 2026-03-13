@@ -4,14 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "veritas-truth-adapter"
-version = "0.1.0"
+version = "0.1.1"
 description = "LoRA training data and adapter management for teaching AI models truthful, hedged responses. Built on SovereignShield's TruthGuard pipeline."
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.8"
-dependencies = [
-    "sovereign-shield>=1.2.0"
-]
+dependencies = []
 authors = [
     {name = "Mattijs Moens"}
 ]

@@ -32,8 +32,10 @@ if result["exported"]:
     print(f"Exported {result['total_pairs']} training pairs")
 
 # Use TruthGuard directly through Veritas
+v.start_session("session-001")
 v.record_tool_use("SEARCH")
 allowed, reason = v.check_answer("The capital of France is Paris.")
+v.end_session()
 ```
 
 ### CLI
@@ -81,7 +83,7 @@ TruthGuard (runtime)          Veritas (training)              Fine-tuning (exter
 ```python
 v = Veritas(
     db_path="truth_guard.db",   # Path to TruthGuard's SQLite database
-    cache_ttl=3600,             # Verified fact cache TTL in seconds (default: 1 hour)
+    fact_ttl_days=7,            # Verified fact TTL in days (default: 7)
 )
 
 # Export with minimum pair threshold
@@ -93,7 +95,20 @@ result = v.export(
 
 ## Dependencies
 
-- `sovereign-shield>=1.2.0` — Provides TruthGuard and LoRAExporter
+None — Veritas bundles its own copies of TruthGuard and LoRAExporter. Pure Python stdlib only.
+
+## Changelog
+
+### 0.1.1
+
+Security audit patch:
+
+- **TruthGuard**: Fact cache lookup now splits answers into sentences before hashing (matches SovereignShield's behavior — individual facts are cached, not full answer blobs).
+- **LoRAExporter**: `_hedge_claim()` no longer crashes on empty strings (`IndexError` guard added).
+
+### 0.1.0
+
+- Initial release.
 
 ## License
 

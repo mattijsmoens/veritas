@@ -52,8 +52,10 @@ def main():
         result = v.export(output_path=args.output, min_pairs=args.min_pairs)
         if result["exported"]:
             print(f"Exported {result['total_pairs']} training pairs to {result['path']}")
-            for pair_type, count in result["breakdown"].items():
-                print(f"  {pair_type}: {count}")
+            export_info = result.get("result", {})
+            if "breakdown" in export_info:
+                for pair_type, count in export_info["breakdown"].items():
+                    print(f"  {pair_type}: {count}")
         else:
             print(result["message"])
             sys.exit(1)
